@@ -5,7 +5,7 @@
 
 
 
-	$current_controller = $routes['default_controller'].'Controller';
+	$current_controller = $routes['default_controller'];
     $current_function = $routes['default_function'];
     
 	require_once('application/controller/'.$current_controller.'.php');
