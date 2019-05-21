@@ -3,8 +3,11 @@
 	class homeController{
 		
 		function welcome(){ 
+			if(! @$_SESSION['uid']){
+				header("location:".BASEURL."auth/logout");
+				exit;
+			}
 
-			include(dirname(__FILE__).'/../view/welcome.php');
 		}
 	}
 
