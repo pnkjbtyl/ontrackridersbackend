@@ -1,13 +1,16 @@
 <?php
 
-	class homeController{
+class homeController{
 		
-		function welcome(){ 
-			if(! @$_SESSION['uid']){
-				header("location:".BASEURL."auth/logout");
-				exit;
-			}
+	function __construct(){
+		
+		if(!$_SESSION['uid']){
+			header("location:".BASEURL."auth/login");
+			exit;
+		}
+	}
 
+		function welcome(){ 
 		}
 	}
 

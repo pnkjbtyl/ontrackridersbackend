@@ -138,11 +138,12 @@
          	
          	
     }
-    function index(){
-     if($_SESSION['login']){
-				header("location:".BASEURL."api/index");
-				exit;
-			}
+    function __construct(){
+    	global $current_function;
+    	if($_SESSION['uid'] && $current_function != 'logout'){
+			header("location:".BASEURL."home/welcome");
+			exit;
+		}
     }
     function logout(){
 		session_destroy();

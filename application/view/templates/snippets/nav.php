@@ -21,7 +21,7 @@
             </a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="<?php echo BASEURL.'users/details' ?>">
+              <a class="nav-link" href="<?php echo BASEURL.'users/index' ?>">
               <span data-feather="users"></span>
               Customers
             </a>
@@ -34,7 +34,7 @@
           </li>
         </ul>
 
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+        <!--<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
           <span>Saved reports</span>
           <a class="d-flex align-items-center text-muted" href="#">
             <span data-feather="plus-circle"></span>
@@ -65,7 +65,7 @@
               Year-end sale
             </a>
           </li>
-          </li>
+          </li>-->
         </ul>
       </div>
     </nav>

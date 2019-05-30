@@ -9,9 +9,9 @@
 
 
 	define('BASEPATH', dirname(dirname(__FILE__)));
-	define('BASEURL', 'http://localhost/ontrackridersbackend/');
+	define('BASEURL', 'http://192.168.1.11/ontrackridersbackend/');
 
-	define('DB_HOST', '192.168.1.6');
+	define('DB_HOST', '192.168.1.10');
     define('DB_USER', 'user');
     define('DB_PASS', '1111Qqqq');
     define('DB_NAME', 'riders_db');

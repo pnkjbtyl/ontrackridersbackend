@@ -9,8 +9,9 @@
 	//Parse URL request
 	$req_path = @$_GET['path'];
 	$_request = explode('/', $req_path);
-
+	
 	//Fetch Controllers and views
+	$current_view = (@$_request[0]? $_request[0]: DEFAULT_CONTROLLER).'_'.(@$_request[1]? $_request[1]: DEFAULT_VIEW);
 	$current_controller = @$_request[0]? $_request[0].'Controller': DEFAULT_CONTROLLER.'Controller';
    	$current_function = @$_request[1]? $_request[1]: DEFAULT_VIEW;
 	try{
@@ -21,6 +22,11 @@
 			require_once(BASEPATH.'/application/controller/'.$current_controller.'.php');
 			$current_controller = new $current_controller;
 			
+			$current_controller->params = [];
+			for($i = 2; $i <= count($_request); $i++)
+				if($i > 1 && trim(@$_request[$i]))
+					$current_controller->params[$_request[$i]] = $_request[++$i];
+			
 			//Assign default variables to controller
 			$current_controller->db = $db;
 			$current_controller->template = DEFAULT_TEMPLATE;
@@ -30,9 +36,9 @@
 					$current_controller->{$current_function}();
 			else	throw new Exception('PAGE_NOT_FOUND');
 			
-			if(file_exists((BASEPATH.'/application/view/'.$current_function.'.php')))
+			if(file_exists((BASEPATH.'/application/view/'.$current_view.'.php')))
 					//Get view output
-					include_once(BASEPATH.'/application/view/'.$current_function.'.php');
+					include_once(BASEPATH.'/application/view/'.$current_view.'.php');
 			else	throw new Exception('PAGE_NOT_FOUND');
 			
 			//Clean all data from output stream and store into a variable
@@ -66,4 +72,5 @@
 				break;
 			}
 	}
+	
 ?>
